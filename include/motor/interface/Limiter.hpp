@@ -20,9 +20,9 @@
 
 namespace motor::interface {
 
-class ILimiter {
+class Limiter {
 public:
-  virtual ~ILimiter() = default;
+  virtual ~Limiter() = default;
 
 public:
   [[nodiscard]] virtual bool isActive() const = 0;
@@ -32,4 +32,4 @@ public:
 
 #include <memory>
 
-using ILimiterPtr = std::unique_ptr<motor::interface::ILimiter>;
+using LimiterPtr = std::unique_ptr<motor::interface::Limiter>;

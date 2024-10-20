@@ -21,8 +21,8 @@
 #include <cstdint>
 #include <functional>
 
-#include "motor/interface/ILimiter.hpp"
-#include "motor/driver/interface/IDriver.hpp"
+#include "motor/interface/Limiter.hpp"
+#include "motor/driver/interface/Driver.hpp"
 
 /**
  * @namespace motor
@@ -30,7 +30,7 @@
  */
 namespace motor {
 
-using Limiters = std::vector<ILimiterPtr>;
+using Limiters = std::vector<LimiterPtr>;
 using CallbackFunction = std::function<void()>;
 using PositionCallbackFunction = std::function<void(int32_t)>;
 
@@ -40,7 +40,7 @@ using PositionCallbackFunction = std::function<void(int32_t)>;
  */
 class MotorController {
 public:
-  explicit MotorController(IDriverPtr motorDriver, ILimiterPtr beginLimiter = nullptr, ILimiterPtr endLimiter = nullptr);
+  explicit MotorController(DriverPtr motorDriver, LimiterPtr beginLimiter = nullptr, LimiterPtr endLimiter = nullptr);
 
 public:
   /**
@@ -392,7 +392,7 @@ public:
 
 private:
   Limiters m_limiters;
-  IDriverPtr m_motorDriver;
+  DriverPtr m_motorDriver;
 
 private:
   CallbackFunction m_homeReachedCallback;

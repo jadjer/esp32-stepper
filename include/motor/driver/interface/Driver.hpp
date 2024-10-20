@@ -40,9 +40,9 @@ enum MotorRotateDirection {
 
 namespace interface {
 
-class IDriver {
+class Driver {
 public:
-  virtual ~IDriver() = default;
+  virtual ~Driver() = default;
 
 public:
   [[nodiscard]] virtual uint32_t getMicrostep() const = 0;
@@ -54,7 +54,7 @@ public:
 public:
   [[nodiscard]] virtual bool isEnabled() const = 0;
   [[nodiscard]] virtual bool isSleeping() const = 0;
-  [[nodiscard]]virtual bool inHome() const = 0;
+  [[nodiscard]] virtual bool inHome() const = 0;
   [[nodiscard]] virtual bool isFault() const = 0;
 
 public:
@@ -75,4 +75,4 @@ public:
 
 #include <memory>
 
-using IDriverPtr = std::unique_ptr<motor::driver::interface::IDriver>;
+using DriverPtr = std::unique_ptr<motor::driver::interface::Driver>;

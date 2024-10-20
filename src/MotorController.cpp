@@ -24,7 +24,7 @@
 
 namespace motor {
 
-MotorController::MotorController(IDriverPtr motorDriver, ILimiterPtr beginLimiter, ILimiterPtr endLimiter) : m_limiters(),
+MotorController::MotorController(DriverPtr motorDriver, LimiterPtr beginLimiter, LimiterPtr endLimiter) : m_limiters(),
                                                                                                              m_motorDriver(std::move(motorDriver)),
                                                                                                              m_homeReachedCallback(nullptr),
                                                                                                              m_limitTriggeredCallback(nullptr),
