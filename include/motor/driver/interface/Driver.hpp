@@ -20,7 +20,7 @@
 
 #include <cstdint>
 
-namespace motor::driver {
+namespace motor {
 
 enum MotorSteps {
   MOTOR_FULL_STEP = 1,
@@ -35,23 +35,24 @@ enum MotorSteps {
   MOTOR_PER_STEP_512_MICRO_STEPS = 512,
 };
 
-enum RotateDirection {
+enum Direction {
   MOTOR_ROTATE_CW = 1,
   MOTOR_ROTATE_CCW = -1,
 };
 
-namespace interface {
+namespace driver::interface {
 
 class Driver {
 public:
   virtual ~Driver() = default;
 
 public:
-  virtual void setMicroStep(MotorSteps microStep) = 0;
-  virtual void setDirection(RotateDirection direction) = 0;
+  virtual void setDirection(Direction direction) = 0;
+  virtual void setMicroSteps(MotorSteps microSteps) = 0;
 
 public:
-  [[nodiscard]] virtual uint32_t getMicroStep() const = 0;
+  [[nodiscard]] virtual Direction getDirection() const = 0;
+  [[nodiscard]] virtual MotorSteps getMicroSteps() const = 0;
 
 public:
   [[nodiscard]] virtual bool isEnabled() const = 0;
@@ -72,8 +73,8 @@ public:
   virtual void stepDown() = 0;
 };
 
-}// namespace interface
-}// namespace motor::driver
+}// namespace driver::interface
+}// namespace motor
 
 #include <memory>
 
