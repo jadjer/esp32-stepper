@@ -1,4 +1,4 @@
-// Copyright 2024 Pavel Suprunov
+// Copyright 2025 Pavel Suprunov
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,6 +17,8 @@
 //
 
 #pragma once
+
+#include <cstdint>
 
 namespace motor::driver {
 
@@ -45,11 +47,11 @@ public:
   virtual ~Driver() = default;
 
 public:
-  [[nodiscard]] virtual uint32_t getMicrostep() const = 0;
-
-public:
   virtual void setDirection(int8_t direction) = 0;
   virtual void setMicrostep(uint32_t microstep) = 0;
+
+public:
+  [[nodiscard]] virtual uint32_t getMicrostep() const = 0;
 
 public:
   [[nodiscard]] virtual bool isEnabled() const = 0;
@@ -70,8 +72,8 @@ public:
   virtual void stepDown() = 0;
 };
 
-}
-}
+}// namespace interface
+}// namespace motor::driver
 
 #include <memory>
 
