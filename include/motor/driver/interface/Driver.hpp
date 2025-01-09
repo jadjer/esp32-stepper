@@ -22,20 +22,20 @@
 
 namespace motor::driver {
 
-enum MotorStep {
+enum MotorSteps {
   MOTOR_FULL_STEP = 1,
-  MOTOR_2_MICROSTEPS = 2,
-  MOTOR_4_MICROSTEPS = 4,
-  MOTOR_8_MICROSTEPS = 8,
-  MOTOR_16_MICROSTEPS = 16,
-  MOTOR_32_MICROSTEPS = 32,
-  MOTOR_64_MICROSTEPS = 64,
-  MOTOR_128_MICROSTEPS = 128,
-  MOTOR_256_MICROSTEPS = 256,
-  MOTOR_512_MICROSTEPS = 512,
+  MOTOR_PER_STEP_2_MICRO_STEPS = 2,
+  MOTOR_PER_STEP_4_MICRO_STEPS = 4,
+  MOTOR_PER_STEP_8_MICRO_STEPS = 8,
+  MOTOR_PER_STEP_16_MICRO_STEPS = 16,
+  MOTOR_PER_STEP_32_MICRO_STEPS = 32,
+  MOTOR_PER_STEP_64_MICRO_STEPS = 64,
+  MOTOR_PER_STEP_128_MICRO_STEPS = 128,
+  MOTOR_PER_STEP_256_MICRO_STEPS = 256,
+  MOTOR_PER_STEP_512_MICRO_STEPS = 512,
 };
 
-enum MotorRotateDirection {
+enum RotateDirection {
   MOTOR_ROTATE_CW = 1,
   MOTOR_ROTATE_CCW = -1,
 };
@@ -47,11 +47,11 @@ public:
   virtual ~Driver() = default;
 
 public:
-  virtual void setDirection(int8_t direction) = 0;
-  virtual void setMicrostep(uint32_t microstep) = 0;
+  virtual void setMicroStep(MotorSteps microStep) = 0;
+  virtual void setDirection(RotateDirection direction) = 0;
 
 public:
-  [[nodiscard]] virtual uint32_t getMicrostep() const = 0;
+  [[nodiscard]] virtual uint32_t getMicroStep() const = 0;
 
 public:
   [[nodiscard]] virtual bool isEnabled() const = 0;
